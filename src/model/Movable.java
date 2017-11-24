@@ -1,23 +1,23 @@
 package model;
 
 public abstract class Movable implements IMovable {
-	private int x;
-	private int y;
-	private Boolean isPackman;
+	private int _x;
+	private int _y;
+	private Boolean _isPackman;
 
 	public void moveUp() {
-		y += 1;
+		_y += 1;
 	}
 
 	public void moveDown() {
-		y -= 1;
+		_y -= 1;
 	}
 
 	public void moveLeft() {
-		x -= 1;
+		_x -= 1;
 	}
 
 	public void moveRight() {
-		x += 1;
+		_x += 1;
 	}
 }
