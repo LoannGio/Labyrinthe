@@ -1,6 +1,6 @@
 package model;
 
-public abstract class Movable {
+public abstract class Movable implements IMovable {
 	private int x;
 	private int y;
 	private Boolean isPackman;
