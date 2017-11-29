@@ -1,23 +1,17 @@
 package model;
 
-public abstract class Movable implements IMovable {
-	protected int _x;
-	protected int _y;
-	protected Boolean _isPackman;
+import model.Labyrinthe.direction;
 
-	public void moveUp() {
-		_y += 1;
+public abstract class Movable extends Item {
+	
+	abstract void startPosition(Labyrinthe labyrinthe, Vertex v);
+	
+	public void move(Labyrinthe labyrinthe, direction dir) {
+		Vertex vertex = this.getRealPosition(labyrinthe.getG());
+		Vertex next = labyrinthe.getG().getEqualVertex(labyrinthe.getG().vertexByDir(vertex, dir));
+		if (labyrinthe.getG().containsEdge(vertex, next) && next != null) {
+			this.setPosition(next);
+		}
 	}
 
-	public void moveDown() {
-		_y -= 1;
-	}
-
-	public void moveLeft() {
-		_x -= 1;
-	}
-
-	public void moveRight() {
-		_x += 1;
-	}
 }
