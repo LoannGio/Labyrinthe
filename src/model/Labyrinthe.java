@@ -35,7 +35,7 @@ public class Labyrinthe {
 		return g;
 	}
 	
-	public Packman getpackman() {
+	public Packman getPackman() {
 		return packman;
 	}
 
