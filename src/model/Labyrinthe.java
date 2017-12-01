@@ -64,7 +64,6 @@ public class Labyrinthe {
 				v2.setNbr(v.getNbr()+1);
 				g.addVertex(v2);
 				g.addEdge(v, v2);
-				System.out.println("edge : "+"("+v.toString()+","+v2.toString()+") "+dir);
 				buildPath(v2);
 			}
 		}
