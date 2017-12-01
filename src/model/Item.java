@@ -1,9 +1,9 @@
 package model;
 
 public abstract class Item {
-	
-	Vertex position;
-	
+
+	protected Vertex position;
+
 	public Vertex getPosition() {
 		return position;
 	}

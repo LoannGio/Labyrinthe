@@ -3,9 +3,9 @@ package model;
 import model.Labyrinthe.direction;
 
 public abstract class Movable extends Item {
-	
-	abstract void startPosition(Labyrinthe labyrinthe, Vertex v);
-	
+
+	protected abstract void startPosition(Labyrinthe labyrinthe, Vertex v);
+
 	public void move(Labyrinthe labyrinthe, direction dir) {
 		Vertex vertex = this.getRealPosition(labyrinthe.getG());
 		Vertex next = labyrinthe.getG().getEqualVertex(labyrinthe.getG().vertexByDir(vertex, dir));
