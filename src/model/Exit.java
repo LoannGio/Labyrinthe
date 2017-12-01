@@ -1,8 +1,8 @@
 package model;
 
-public class Door extends Item{
+public class Exit extends Item{
 
-	public Door() {
+	public Exit() {
 		setPosition(new Vertex(0, 0, 0));
 	}
 

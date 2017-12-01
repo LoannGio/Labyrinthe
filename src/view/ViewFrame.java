@@ -102,7 +102,7 @@ public class ViewFrame {
 		vPlayer.relocate(x, y);
 	}
 	
-	public static void drawDoor(int x, int y) {
+	public static void drawExit(int x, int y) {
 		ImageView vDoor = new ImageView(door);
 		x = WALL * SPAN + x * (WALL + CELL) * SPAN;
 		y = WALL * SPAN + y * (WALL + CELL) * SPAN;

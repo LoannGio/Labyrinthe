@@ -16,7 +16,7 @@ public class Labyrinthe {
 	
 	protected Graph g;
 	protected Packman packman;
-	protected Door Door;
+	protected Exit exit;
 	
 	public enum direction {
 		North,
@@ -28,7 +28,7 @@ public class Labyrinthe {
 	public Labyrinthe() {
 		g = new Graph();
 		packman = new Packman();
-		Door = new Door();
+		exit = new Exit();
 	}
 	
 	public Graph getG() {
@@ -39,8 +39,8 @@ public class Labyrinthe {
 		return packman;
 	}
 
-	public Door getDoor() {
-		return Door;
+	public Exit getExit() {
+		return exit;
 	}
 
 	public int getRIGHT_BORDER() {
