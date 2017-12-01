@@ -19,6 +19,7 @@ public class Controller {
 		model.getG().addVertex(v);
 		model.buildPath(v);
 		model.getPackman().startPosition(model, model.getG().getEqualVertex(v));
+		model.getGhost().startPosition(model, model.getG().getEqualVertex(v));
 	}
 
 	public static Controller getInstance() {
