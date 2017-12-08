@@ -18,6 +18,9 @@ public class Controller {
 		Vertex v = model.getExit().getPosition();
 		model.getG().addVertex(v);
 		model.buildPath(v);
+		for (int i = 0 ; i < 10 ; i++) {
+			model.opendDoorRandom();
+		}
 		model.getPackman().startPosition(model, model.getG().getEqualVertex(v));
 		model.getGhost().startPosition(model, model.getG().getEqualVertex(v));
 	}
