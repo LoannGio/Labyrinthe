@@ -1,7 +1,5 @@
 package model;
 
-import model.Labyrinthe.direction;
-
 public abstract class Movable extends Item {
 
 	protected abstract void startPosition(Labyrinthe labyrinthe, Vertex v);

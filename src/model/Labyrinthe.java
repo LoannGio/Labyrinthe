@@ -15,11 +15,13 @@ public class Labyrinthe {
 
 	protected Graph g;
 	protected Packman packman;
+	protected Ghost ghost;
 	protected Exit exit;
 
 	public Labyrinthe() {
 		g = new Graph();
 		packman = new Packman();
+		ghost = new Ghost(); 
 		exit = new Exit();
 	}
 
@@ -29,6 +31,10 @@ public class Labyrinthe {
 
 	public Packman getPackman() {
 		return packman;
+	}
+	
+	public Ghost getGhost() {
+		return ghost;
 	}
 
 	public Exit getExit() {

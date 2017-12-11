@@ -4,6 +4,7 @@ import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import model.Exit;
+import model.Ghost;
 import model.Graph;
 import model.Labyrinthe;
 import model.Packman;
@@ -28,6 +29,7 @@ public class View {
 		ViewFrame.drawFrame(primaryStage, longueur, largeur);
 		Graph graph = laby.getG();
 		Packman player = laby.getPackman();
+		Ghost ghost = laby.getGhost();
 		Exit exit = laby.getExit();
 
 		// Walls initialization
@@ -59,6 +61,7 @@ public class View {
 
 		ViewFrame.drawPlayer(player.getPosition().getX(), player.getPosition().getY());
 		ViewFrame.drawExit(exit.getPosition().getX(), exit.getPosition().getY());
+		ViewFrame.drawGhost(ghost.getPosition().getX(), ghost.getPosition().getY());
 	}
 
 	public void updatePlayer(int x, int y) {

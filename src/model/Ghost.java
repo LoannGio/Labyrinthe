@@ -2,6 +2,8 @@ package model;
 
 public class Ghost extends Movable {
 
+	static final int minDist = 10;
+	
 	public void move(Labyrinthe labyrinthe) {
 		Vertex vertex = this.getRealPosition(labyrinthe.getG());
 		for (direction dir : direction.values()) {
@@ -15,7 +17,12 @@ public class Ghost extends Movable {
 
 	@Override
 	public void startPosition(Labyrinthe labyrinthe, Vertex niceGuyPosition) {
-
+		Vertex v;
+		do {
+			v = labyrinthe.getG().getEqualVertex(labyrinthe.getG().randomVertex());
+			labyrinthe.launchManhattan(v, niceGuyPosition);
+		} while (v.getNbr() < minDist);
+		this.setPosition(v);
 	}
 
 }
