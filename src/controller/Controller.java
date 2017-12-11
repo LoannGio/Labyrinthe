@@ -15,7 +15,6 @@ public class Controller {
 	private Labyrinthe model;
 
 	private Controller() {
-		// model = Model.getInstance();
 		view = View.getInstance();
 		model = new Labyrinthe();
 		model.getExit().startPosition();
@@ -23,7 +22,7 @@ public class Controller {
 		model.getG().addVertex(v);
 		model.buildPath(v);
 		for (int i = 0; i < 20; i++) {
-			model.opendDoorRandom();
+			model.openDoorRandom();
 		}
 		model.getPackman().startPosition(model, model.getG().getEqualVertex(v));
 		model.getGhost().startPosition(model, model.getG().getEqualVertex(v));
@@ -62,9 +61,46 @@ public class Controller {
 				default:
 					break;
 				}
+				
 				view.updatePlayer(model.getPackman().getPosition().getX(), model.getPackman().getPosition().getY());
-				view.updateGhost(model.getGhost().getPosition().getX(), model.getGhost().getPosition().getY());
+				view.updateGhost(model.getGhost().getPosition().getX(), model.getGhost().getPosition().getY());	
+				int end = model.checkCollision(); // -1 <=> pas fini ; 0 <=> perdu ; 1 <=> gagné
+				int doNext = -2; //-1 <=> rejouer ; 0 <=> quitter ; 1 <=> continuer ; -2 <=> partie non-finie
+				if(end != -1) {
+					doNext = view.drawEndGame(end);
+				}
+				if(doNext != -2) {
+					switch(doNext) {
+					case -1:
+						replay(primaryStage);
+						break;
+						
+					case 0:
+						System.exit(0);
+						break;
+						
+					case 1:
+						break;
+						
+					default:
+						break;
+					}
+				}
 			}
 		});
+	}
+	
+	private void replay(Stage primaryStage) {
+		model = new Labyrinthe();
+		model.getExit().startPosition();
+		Vertex v = model.getExit().getPosition();
+		model.getG().addVertex(v);
+		model.buildPath(v);
+		for (int i = 0; i < 20; i++) {
+			model.openDoorRandom();
+		}
+		model.getPackman().startPosition(model, model.getG().getEqualVertex(v));
+		model.getGhost().startPosition(model, model.getG().getEqualVertex(v));
+		this.start(primaryStage);
 	}
 }

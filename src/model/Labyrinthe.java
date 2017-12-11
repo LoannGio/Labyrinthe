@@ -67,7 +67,7 @@ public class Labyrinthe {
 		}
 	}
 
-	public void opendDoorRandom() {
+	public void openDoorRandom() {
 		List<direction> direct = new ArrayList<>();
 		Collections.addAll(direct, direction.values());
 
@@ -82,7 +82,6 @@ public class Labyrinthe {
 						Edge edge = g.getG().getEdge(v, v2);
 						if (edge == null) {
 							g.addEdge(v, v2);
-							System.out.println("added edge : " + "(" + v.toString() + "," + v2.toString() + ")");
 							return;
 						}
 					}
@@ -116,6 +115,24 @@ public class Labyrinthe {
 			((Vertex) vertex).setNbr(0);
 		}
 		calculateManhattanDistance(source, target);
+	}
+
+	public int checkCollision() {
+		int packmanX = packman.getPosition().getX();
+		int packmanY = packman.getPosition().getY();
+		
+		int ghostX = ghost.getPosition().getX();
+		int ghostY = ghost.getPosition().getY();
+		
+		int exitX = exit.getPosition().getX();
+		int exitY = exit.getPosition().getY();
+		
+		if(packmanX == exitX && packmanY == exitY)
+			return 1;
+		else if(packmanX == ghostX && packmanY == ghostY)
+			return 0;
+		else
+			return -1;
 	}
 
 }

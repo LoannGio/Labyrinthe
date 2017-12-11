@@ -1,6 +1,11 @@
 package view;
 
+import java.util.Optional;
+
 import javafx.event.EventHandler;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import model.Exit;
@@ -23,7 +28,6 @@ public class View {
 	}
 
 	public void start(Stage primaryStage, Labyrinthe laby) {
-
 		int longueur = laby.getRIGHT_BORDER() + 1;
 		int largeur = laby.getDOWN_BORDER() + 1;
 		ViewFrame.drawFrame(primaryStage, longueur, largeur);
@@ -63,6 +67,10 @@ public class View {
 		ViewFrame.drawExit(exit.getPosition().getX(), exit.getPosition().getY());
 		ViewFrame.drawGhost(ghost.getPosition().getX(), ghost.getPosition().getY());
 	}
+	
+	public void startGame(Stage primaryStage, Labyrinthe laby) {
+		
+	}
 
 	public void updatePlayer(int x, int y) {
 		ViewFrame.updatePlayer(x, y);
@@ -74,5 +82,37 @@ public class View {
 
 	public void setOnAction(EventHandler<KeyEvent> event) {
 		ViewFrame.scene.setOnKeyPressed(event);
+	}
+
+	public int drawEndGame(int end) {
+		Alert alert = new Alert(AlertType.CONFIRMATION);
+		String title = "Gagné !";
+		String text = "Bravo, vous avez gagné !";
+		String replay = "Continuer";
+		if(end == 0) {
+			title = "Perdu...";
+			text = "Dommage, essayez encore une fois !";
+			replay = "Rejouer";
+		}
+		ButtonType buttonTypeReplay = new ButtonType(replay);
+		ButtonType buttonTypeQuit = new ButtonType("Quitter");
+		alert.setTitle(title);
+		alert.setHeaderText(null);
+		alert.setContentText(text);
+
+		alert.getButtonTypes().setAll(buttonTypeReplay, buttonTypeQuit);
+		Optional<ButtonType> result = alert.showAndWait();
+		
+		if(result.get() == buttonTypeReplay) {
+			if(end == 0) {
+				return -1;
+			}
+			else {
+				return 1;
+			}
+		}
+		else {
+			return 0;
+		}
 	}
 }
