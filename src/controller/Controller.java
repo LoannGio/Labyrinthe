@@ -41,22 +41,22 @@ public class Controller {
 				case UP:
 				case Z:
 					model.getPackman().move(model, direction.North);
-					model.getGhost().move(model, direction.North);
+					model.getGhost().move(model);
 					break;
 				case LEFT:
 				case Q:
 					model.getPackman().move(model, direction.West);
-					model.getGhost().move(model, direction.West);
+					model.getGhost().move(model);
 					break;
 				case DOWN:
 				case S:
 					model.getPackman().move(model, direction.South);
-					model.getGhost().move(model, direction.South);
+					model.getGhost().move(model);
 					break;
 				case RIGHT:
 				case D:
 					model.getPackman().move(model, direction.East);
-					model.getGhost().move(model, direction.East);
+					model.getGhost().move(model);
 					break;
 				default:
 					break;
