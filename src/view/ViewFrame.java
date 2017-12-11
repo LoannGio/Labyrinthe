@@ -19,10 +19,10 @@ public class ViewFrame {
 	private static Group pane;
 	private static Image player = new Image("img/player.png");
 	private static Image door = new Image("img/door_open.png");
-	private static Image villain = new Image("img/bad.png");
+	private static Image ghost = new Image("img/bad.png");
 	private static Image candy = new Image("img/candy-1.png");
 	private static ImageView vPlayer = new ImageView(player);
-	private static ImageView vVillain = new ImageView(villain);
+	private static ImageView vGhost = new ImageView(ghost);
 	
 	public static void drawFrame(Stage stage, int nbrX, int nbrY) {
 		pane = new Group();
@@ -110,17 +110,17 @@ public class ViewFrame {
 		pane.getChildren().add(vDoor);
 	}
 	
-	public static void drawVillain(int x, int y) {
+	public static void drawGhost(int x, int y) {
 		x = WALL * SPAN + x * (WALL + CELL) * SPAN;
 		y = WALL * SPAN + y * (WALL + CELL) * SPAN;
-		vVillain.relocate(x, y);
-		pane.getChildren().add(vVillain);
+		vGhost.relocate(x, y);
+		pane.getChildren().add(vGhost);
 	}
 	
-	public static void updateVillain(int x, int y) {
+	public static void updateGhost(int x, int y) {
 		x = WALL * SPAN + x * (WALL + CELL) * SPAN;
 		y = WALL * SPAN + y * (WALL + CELL) * SPAN;
-		vVillain.relocate(x, y);
+		vGhost.relocate(x, y);
 	}
 	
 	public static void drawCandy(int x, int y) {

@@ -27,7 +27,7 @@ public class View {
 		ViewFrame.drawFrame(primaryStage, longueur, largeur);
 		Graph graph = laby.getG();
 		Packman player = laby.getPackman();
-		Ghost villain = laby.getGhost();
+		Ghost ghost = laby.getGhost();
 		Exit exit = laby.getExit();
 		
 		//Walls initialization
@@ -60,7 +60,7 @@ public class View {
 				
 		ViewFrame.drawPlayer(player.getPosition().getX(), player.getPosition().getY());
 		ViewFrame.drawExit(exit.getPosition().getX(), exit.getPosition().getY());
-		ViewFrame.drawVillain(villain.getPosition().getX(), villain.getPosition().getY());
+		ViewFrame.drawGhost(ghost.getPosition().getX(), ghost.getPosition().getY());
 	}
 	
 	public void updatePlayer(int x, int y) {
