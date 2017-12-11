@@ -1,7 +1,5 @@
 package model;
 
-import model.Labyrinthe.direction;
-
 public class Ghost extends Movable {
 
 	public void move(Labyrinthe labyrinthe) {

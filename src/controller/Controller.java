@@ -1,8 +1,12 @@
 package controller;
 
+import javafx.event.EventHandler;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
+import model.Labyrinthe;
+import model.Vertex;
+import model.direction;
 import view.View;
-import model.*;
 
 public class Controller {
 
@@ -27,6 +31,31 @@ public class Controller {
 
 	public void start(Stage primaryStage) {
 		view.start(primaryStage, model);
-	};
-
+		primaryStage.getScene().setOnKeyPressed(new EventHandler<KeyEvent>() {
+			@Override
+			public void handle(KeyEvent event) {
+				switch (event.getCode()) {
+				case UP:
+				case Z:
+					model.getPackman().move(model, direction.North);
+					break;
+				case LEFT:
+				case Q:
+					model.getPackman().move(model, direction.West);
+					break;
+				case DOWN:
+				case S:
+					model.getPackman().move(model, direction.South);
+					break;
+				case RIGHT:
+				case D:
+					model.getPackman().move(model, direction.East);
+					break;
+				default:
+					break;
+				}
+				view.updatePlayer(model.getPackman().getPosition().getX(), model.getPackman().getPosition().getY());
+			}
+		});
+	}
 }
