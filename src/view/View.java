@@ -67,6 +67,10 @@ public class View {
 	public void updatePlayer(int x, int y) {
 		ViewFrame.updatePlayer(x, y);
 	}
+	
+	public void updateGhost(int x, int y) {
+		ViewFrame.updateGhost(x, y);
+	}
 
 	public void setOnAction(EventHandler<KeyEvent> event) {
 		ViewFrame.scene.setOnKeyPressed(event);

@@ -22,7 +22,7 @@ public class Controller {
 		Vertex v = model.getExit().getPosition();
 		model.getG().addVertex(v);
 		model.buildPath(v);
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < 20; i++) {
 			model.opendDoorRandom();
 		}
 		model.getPackman().startPosition(model, model.getG().getEqualVertex(v));
@@ -42,23 +42,28 @@ public class Controller {
 				case UP:
 				case Z:
 					model.getPackman().move(model, direction.North);
+					model.getGhost().move(model, direction.North);
 					break;
 				case LEFT:
 				case Q:
 					model.getPackman().move(model, direction.West);
+					model.getGhost().move(model, direction.West);
 					break;
 				case DOWN:
 				case S:
 					model.getPackman().move(model, direction.South);
+					model.getGhost().move(model, direction.South);
 					break;
 				case RIGHT:
 				case D:
 					model.getPackman().move(model, direction.East);
+					model.getGhost().move(model, direction.East);
 					break;
 				default:
 					break;
 				}
 				view.updatePlayer(model.getPackman().getPosition().getX(), model.getPackman().getPosition().getY());
+				view.updateGhost(model.getGhost().getPosition().getX(), model.getGhost().getPosition().getY());
 			}
 		});
 	}
