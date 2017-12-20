@@ -44,7 +44,7 @@ public class MyThread extends Thread {
 													// perdu ; 1 <=> gagné
 				doNext = -2; // -1 <=> rejouer ; 0 <=> quitter ; 1 <=>
 								// continuer ; -2 <=> partie non-finie
-				if (end != -1) {
+				if (end == 0 || end == 1) {
 					this.cancel();
 					Platform.runLater(new Runnable() {
 						@Override
@@ -68,6 +68,14 @@ public class MyThread extends Thread {
 									break;
 								}
 							}
+						}
+					});
+				}
+				else if(end == 2){
+					Platform.runLater(new Runnable() {
+						@Override
+						public void run() {
+							view.pickUpBonbon(model.getScore());
 						}
 					});
 				}
