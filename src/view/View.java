@@ -95,6 +95,10 @@ public class View {
 	public void updateTime(int temps) {
 		ViewFrame.updateTime(temps);
 	}
+	
+	public void updateScore(int score) {
+		ViewFrame.updateScore(score);
+	}
 
 	public int drawEndGame(int end) {
 		Alert alert = new Alert(AlertType.CONFIRMATION);
