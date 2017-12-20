@@ -71,19 +71,19 @@ public class View {
 		ViewFrame.drawCandy(bonbon.getPosition().getX(), bonbon.getPosition().getY());
 		ViewFrame.drawGhost(ghost.getPosition().getX(), ghost.getPosition().getY());
 	}
-	
+
 	public void startGame(Stage primaryStage, Labyrinthe laby) {
-		
+
 	}
 
 	public void updatePlayer(int x, int y) {
 		ViewFrame.updatePlayer(x, y);
 	}
-	
+
 	public void updateGhost(int x, int y) {
 		ViewFrame.updateGhost(x, y);
 	}
-	
+
 	public void pickUpBonbon(int score) {
 		ViewFrame.deleteBonbon(score);
 	}
@@ -91,17 +91,17 @@ public class View {
 	public void setOnAction(EventHandler<KeyEvent> event) {
 		ViewFrame.scene.setOnKeyPressed(event);
 	}
-	
+
 	public void updateTime(int temps) {
 		ViewFrame.updateTime(temps);
 	}
 
 	public int drawEndGame(int end) {
 		Alert alert = new Alert(AlertType.CONFIRMATION);
-		String title = "Gagné !";
-		String text = "Bravo, vous avez gagné !";
+		String title = "Gagne !";
+		String text = "Bravo, vous avez gagne !";
 		String replay = "Continuer";
-		if(end == 0) {
+		if (end == 0) {
 			title = "Perdu...";
 			text = "Dommage, essayez encore une fois !";
 			replay = "Rejouer";
@@ -114,16 +114,14 @@ public class View {
 
 		alert.getButtonTypes().setAll(buttonTypeReplay, buttonTypeQuit);
 		Optional<ButtonType> result = alert.showAndWait();
-		
-		if(result.get() == buttonTypeReplay) {
-			if(end == 0) {
+
+		if (result.get() == buttonTypeReplay) {
+			if (end == 0) {
 				return -1;
-			}
-			else {
+			} else {
 				return 1;
 			}
-		}
-		else {
+		} else {
 			return 0;
 		}
 	}
