@@ -8,6 +8,9 @@ import model.Vertex;
 import model.direction;
 import view.View;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class Controller {
 
 	private static Controller instance = new Controller();
@@ -27,6 +30,17 @@ public class Controller {
 		model.getPackman().startPosition(model, model.getG().getEqualVertex(v));
 		model.getGhost().startPosition(model, model.getG().getEqualVertex(v));
 		model.getBonbon().startPosition(model,model.getPackman().getPosition());
+		
+		Timer timer = new Timer();
+		timer.scheduleAtFixedRate(new TimerTask() {
+			int time = 0;
+			  @Override
+			  public void run() {
+				  time = time+1;
+				  view.updateTime(time);
+			  }
+			}, 1000, 1000);
+
 	}
 
 	public static Controller getInstance() {

@@ -87,6 +87,10 @@ public class View {
 	public void setOnAction(EventHandler<KeyEvent> event) {
 		ViewFrame.scene.setOnKeyPressed(event);
 	}
+	
+	public void updateTime(int temps) {
+		ViewFrame.updateTime(temps);
+	}
 
 	public int drawEndGame(int end) {
 		Alert alert = new Alert(AlertType.CONFIRMATION);

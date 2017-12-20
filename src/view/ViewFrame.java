@@ -129,6 +129,10 @@ public class ViewFrame {
 		y = WALL * SPAN + y * (WALL + CELL) * SPAN;
 		vGhost.relocate(x, y);
 	}
+	
+	public static void updateTime(int temps) {
+		timer.setText("Timer : "+ temps);
+	}
 
 	public static void drawCandy(int x, int y) {
 		ImageView vCandy = new ImageView(candy);
