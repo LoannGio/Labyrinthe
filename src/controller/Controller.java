@@ -16,6 +16,7 @@ public class Controller {
 	private int level;
 
 	private Controller() {
+		view = View.getInstance();
 		level = 1;
 		playGame();
 
@@ -57,7 +58,6 @@ public class Controller {
 	}
 
 	public void playGame() {
-		view = View.getInstance();
 		model = new Labyrinthe();
 		model.getExit().startPosition();
 		Vertex v = model.getExit().getPosition();
@@ -92,6 +92,7 @@ public class Controller {
 
 		model.getPackman().startPosition(model, model.getG().getEqualVertex(v));
 		model.getGhost().startPosition(model, model.getG().getEqualVertex(v));
+		model.getBonbon().startPosition(model, model.getPackman().getPosition());
 		this.start(primaryStage);
 	}
 

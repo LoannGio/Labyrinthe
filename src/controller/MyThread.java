@@ -29,9 +29,9 @@ public class MyThread extends Thread {
 		tick = (1000) - (level - 1) * 150;
 		if (tick < 400)
 			tick = 400;
+		// tick = 200;
 		timer = new Timer();
 		clock = new Timer();
-		System.out.println(tick);
 		startClock();
 		this.start();
 	}
@@ -78,6 +78,7 @@ public class MyThread extends Thread {
 								switch (doNext) {
 								case -1:
 									controller.playGame();
+									controller.start(stage);
 									break;
 
 								case 0:
