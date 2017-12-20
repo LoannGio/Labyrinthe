@@ -19,15 +19,19 @@ public class MyThread extends Thread {
 	private int doNext;
 	private Stage stage;
 
-	public MyThread(String name, Labyrinthe lab, View v, Controller c, Stage s, int timer_tick) {
+	public MyThread(String name, Labyrinthe lab, View v, Controller c, Stage s) {
 		super(name);
 		model = lab;
 		view = v;
 		controller = c;
 		stage = s;
-		tick = timer_tick;
+		int level = c.getLevel();
+		tick = (1000) - (level - 1) * 150;
+		if (tick < 400)
+			tick = 400;
 		timer = new Timer();
 		clock = new Timer();
+		System.out.println(tick);
 		startClock();
 		this.start();
 	}
@@ -35,12 +39,13 @@ public class MyThread extends Thread {
 	private void startClock() {
 		clock.scheduleAtFixedRate(new TimerTask() {
 			int time = 0;
-			  @Override
-			  public void run() {
-				  time = time+1;
-				  view.updateTime(time);
-			  }
-			}, 1000, 1000);
+
+			@Override
+			public void run() {
+				time = time + 1;
+				view.updateTime(time);
+			}
+		}, 1000, 1000);
 	}
 
 	public void run() {
@@ -68,15 +73,14 @@ public class MyThread extends Thread {
 							if (doNext != -2) {
 								switch (doNext) {
 								case -1:
-									controller.replay(stage);
+									controller.playGame();
 									break;
 
 								case 0:
 									System.exit(0);
 									break;
-
 								case 1:
-									System.out.println("toto");
+									controller.continueGame(stage);
 									break;
 
 								default:
@@ -85,8 +89,7 @@ public class MyThread extends Thread {
 							}
 						}
 					});
-				}
-				else if(end == 2){
+				} else if (end == 2) {
 					Platform.runLater(new Runnable() {
 						@Override
 						public void run() {
