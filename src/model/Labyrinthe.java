@@ -18,13 +18,17 @@ public class Labyrinthe {
 	protected Ghost ghost;
 	protected Exit exit;
 	protected Bonbon bonbon;
+	protected int score;
+	protected int timer;
 
 	public Labyrinthe() {
 		g = new Graph();
 		packman = new Packman();
 		ghost = new Ghost(); 
 		exit = new Exit();
-		bonbon = new Bonbon(); 
+		bonbon = new Bonbon();
+		score = 0;
+		timer = 0;
 	}
 
 	public Graph getG() {
@@ -45,6 +49,14 @@ public class Labyrinthe {
 	
 	public Bonbon getBonbon() {
 		return bonbon;
+	}
+	
+	public int getScore() {
+		return score;
+	}
+	
+	public int getTimer() {
+		return timer;
 	}
 	
 	public int getRIGHT_BORDER() {
@@ -133,11 +145,23 @@ public class Labyrinthe {
 		int exitX = exit.getPosition().getX();
 		int exitY = exit.getPosition().getY();
 		
-		int bonbonX = bonbon.getPosition().getX();
-		int bonbonY = bonbon.getPosition().getY();
+		int bonbonX;
+		int bonbonY;
 		
-		if(packmanX == bonbonX && packmanY == bonbonY)
+		if(bonbon != null) {
+			bonbonX = bonbon.getPosition().getX();
+			bonbonY = bonbon.getPosition().getY();
+		}
+		else {
+			bonbonX = -1;
+			bonbonY = -1;
+		}
+		
+		if(packmanX == bonbonX && packmanY == bonbonY) {
+			score += 50;
+			bonbon = null;
 			return 2;
+		}
 		else if(packmanX == exitX && packmanY == exitY)
 			return 1;
 		else if(packmanX == ghostX && packmanY == ghostY)

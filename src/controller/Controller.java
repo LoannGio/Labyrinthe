@@ -69,7 +69,8 @@ public class Controller {
 				int doNext = -2; //-1 <=> rejouer ; 0 <=> quitter ; 1 <=> continuer ; -2 <=> partie non-finie
 				if(end == 0 || end == 1)
 					doNext = view.drawEndGame(end);
-				//else if(end == 2)
+				else if(end == 2)
+					view.pickUpBonbon(model.getScore());
 					
 				if(doNext != -2) {
 					switch(doNext) {

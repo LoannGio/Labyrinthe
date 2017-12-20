@@ -22,11 +22,15 @@ public class ViewFrame {
 	private static Image ghost = new Image("img/bad.png");
 	private static Image candy = new Image("img/candy-1.png");
 	private static ImageView vPlayer = new ImageView(player);
-	public static Scene scene;
-	private static Text score;
-	private static Text timer;
-
 	private static ImageView vGhost = new ImageView(ghost);
+	private static ImageView vCandy = new ImageView(candy);
+	public static Scene scene;
+	private static int score;
+	private static int timer;
+	private static Text scoreText;
+	private static Text timerText;
+
+	
 	
 	public static void drawFrame(Stage stage, int nbrX, int nbrY) {
 		pane = new Group();
@@ -62,13 +66,15 @@ public class ViewFrame {
 			}
 		}
 		
-		score = new Text(scene.getWidth() - 3 * CELL * SPAN, 25, "Score : 0");
-		score.setFill(Color.BLACK);
-		pane.getChildren().add(score);
+		score = 0;
+		scoreText = new Text(scene.getWidth() - 3 * CELL * SPAN, 25, "Score : " + score);
+		scoreText.setFill(Color.BLACK);
+		pane.getChildren().add(scoreText);
 		
-		timer = new Text(scene.getWidth() - 3 * CELL * SPAN, 75, "Timer : 00");
-		timer.setFill(Color.BLACK);
-		pane.getChildren().add(timer);
+		timer = 0;
+		timerText = new Text(scene.getWidth() - 3 * CELL * SPAN, 75, "Timer : " + timer);
+		timerText.setFill(Color.BLACK);
+		pane.getChildren().add(timerText);
 		
 		
 		stage.show();
@@ -131,10 +137,14 @@ public class ViewFrame {
 	}
 
 	public static void drawCandy(int x, int y) {
-		ImageView vCandy = new ImageView(candy);
 		x = WALL * SPAN + x * (WALL + CELL) * SPAN;
 		y = 3 * WALL * SPAN + y * (WALL + CELL) * SPAN;
 		vCandy.relocate(x, y);
 		pane.getChildren().add(vCandy);
+	}
+	
+	public static void deleteBonbon(int score) {
+		scoreText.setText("Score : " + score);
+		pane.getChildren().remove(vCandy);
 	}
 }
