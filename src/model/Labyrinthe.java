@@ -133,7 +133,12 @@ public class Labyrinthe {
 		int exitX = exit.getPosition().getX();
 		int exitY = exit.getPosition().getY();
 		
-		if(packmanX == exitX && packmanY == exitY)
+		int bonbonX = bonbon.getPosition().getX();
+		int bonbonY = bonbon.getPosition().getY();
+		
+		if(packmanX == bonbonX && packmanY == bonbonY)
+			return 2;
+		else if(packmanX == exitX && packmanY == exitY)
 			return 1;
 		else if(packmanX == ghostX && packmanY == ghostY)
 			return 0;

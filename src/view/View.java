@@ -29,6 +29,7 @@ public class View {
 	}
 
 	public void start(Stage primaryStage, Labyrinthe laby) {
+		primaryStage.setTitle("Labyrinthe");
 		int longueur = laby.getRIGHT_BORDER() + 1;
 		int largeur = laby.getDOWN_BORDER() + 1;
 		ViewFrame.drawFrame(primaryStage, longueur, largeur);

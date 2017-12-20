@@ -7,6 +7,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class ViewFrame {
@@ -22,12 +23,14 @@ public class ViewFrame {
 	private static Image candy = new Image("img/candy-1.png");
 	private static ImageView vPlayer = new ImageView(player);
 	public static Scene scene;
+	private static Text score;
+	private static Text timer;
 
 	private static ImageView vGhost = new ImageView(ghost);
-
+	
 	public static void drawFrame(Stage stage, int nbrX, int nbrY) {
 		pane = new Group();
-		scene = new Scene(pane, ((WALL + CELL) * nbrX + WALL) * SPAN, ((WALL + CELL) * nbrY + WALL) * SPAN);
+		scene = new Scene(pane, ((WALL + CELL) * nbrX + WALL) * SPAN + 4 * CELL * SPAN, ((WALL + CELL) * nbrY + WALL) * SPAN);
 		scene.setFill(SCENE_COLOR);
 
 		Rectangle square;
@@ -58,6 +61,16 @@ public class ViewFrame {
 				pane.getChildren().add(square);
 			}
 		}
+		
+		score = new Text(scene.getWidth() - 3 * CELL * SPAN, 25, "Score : 0");
+		score.setFill(Color.BLACK);
+		pane.getChildren().add(score);
+		
+		timer = new Text(scene.getWidth() - 3 * CELL * SPAN, 75, "Timer : 00");
+		timer.setFill(Color.BLACK);
+		pane.getChildren().add(timer);
+		
+		
 		stage.show();
 	}
 
