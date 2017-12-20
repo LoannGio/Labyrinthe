@@ -7,6 +7,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class ViewFrame {
@@ -21,13 +22,19 @@ public class ViewFrame {
 	private static Image ghost = new Image("img/bad.png");
 	private static Image candy = new Image("img/candy-1.png");
 	private static ImageView vPlayer = new ImageView(player);
-	public static Scene scene;
-
 	private static ImageView vGhost = new ImageView(ghost);
+	private static ImageView vCandy = new ImageView(candy);
+	public static Scene scene;
+	private static int score;
+	private static int timer;
+	private static Text scoreText;
+	private static Text timerText;
 
+	
+	
 	public static void drawFrame(Stage stage, int nbrX, int nbrY) {
 		pane = new Group();
-		scene = new Scene(pane, ((WALL + CELL) * nbrX + WALL) * SPAN, ((WALL + CELL) * nbrY + WALL) * SPAN);
+		scene = new Scene(pane, ((WALL + CELL) * nbrX + WALL) * SPAN + 4 * CELL * SPAN, ((WALL + CELL) * nbrY + WALL) * SPAN);
 		scene.setFill(SCENE_COLOR);
 
 		Rectangle square;
@@ -58,6 +65,18 @@ public class ViewFrame {
 				pane.getChildren().add(square);
 			}
 		}
+		
+		score = 0;
+		scoreText = new Text(scene.getWidth() - 3 * CELL * SPAN, 25, "Score : " + score);
+		scoreText.setFill(Color.BLACK);
+		pane.getChildren().add(scoreText);
+		
+		timer = 0;
+		timerText = new Text(scene.getWidth() - 3 * CELL * SPAN, 75, "Timer : " + timer);
+		timerText.setFill(Color.BLACK);
+		pane.getChildren().add(timerText);
+		
+		
 		stage.show();
 	}
 
@@ -102,6 +121,7 @@ public class ViewFrame {
 		vDoor.relocate(x, y);
 		pane.getChildren().add(vDoor);
 	}
+	
 
 	public static void drawGhost(int x, int y) {
 		x = WALL * SPAN + x * (WALL + CELL) * SPAN;
@@ -117,10 +137,14 @@ public class ViewFrame {
 	}
 
 	public static void drawCandy(int x, int y) {
-		ImageView vCandy = new ImageView(candy);
 		x = WALL * SPAN + x * (WALL + CELL) * SPAN;
 		y = 3 * WALL * SPAN + y * (WALL + CELL) * SPAN;
 		vCandy.relocate(x, y);
 		pane.getChildren().add(vCandy);
+	}
+	
+	public static void deleteBonbon(int score) {
+		scoreText.setText("Score : " + score);
+		pane.getChildren().remove(vCandy);
 	}
 }
