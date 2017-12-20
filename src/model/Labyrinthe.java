@@ -17,12 +17,14 @@ public class Labyrinthe {
 	protected Packman packman;
 	protected Ghost ghost;
 	protected Exit exit;
+	protected direction current_dir;
 
 	public Labyrinthe() {
 		g = new Graph();
 		packman = new Packman();
-		ghost = new Ghost(); 
+		ghost = new Ghost();
 		exit = new Exit();
+		current_dir = direction.North;
 	}
 
 	public Graph getG() {
@@ -32,7 +34,7 @@ public class Labyrinthe {
 	public Packman getPackman() {
 		return packman;
 	}
-	
+
 	public Ghost getGhost() {
 		return ghost;
 	}
@@ -47,6 +49,14 @@ public class Labyrinthe {
 
 	public int getDOWN_BORDER() {
 		return DOWN_BORDER;
+	}
+
+	public direction getCurrent_dir() {
+		return current_dir;
+	}
+
+	public void setCurrent_dir(direction current_dir) {
+		this.current_dir = current_dir;
 	}
 
 	public void buildPath(Vertex v) {
@@ -120,16 +130,16 @@ public class Labyrinthe {
 	public int checkCollision() {
 		int packmanX = packman.getPosition().getX();
 		int packmanY = packman.getPosition().getY();
-		
+
 		int ghostX = ghost.getPosition().getX();
 		int ghostY = ghost.getPosition().getY();
-		
+
 		int exitX = exit.getPosition().getX();
 		int exitY = exit.getPosition().getY();
-		
-		if(packmanX == exitX && packmanY == exitY)
+
+		if (packmanX == exitX && packmanY == exitY)
 			return 1;
-		else if(packmanX == ghostX && packmanY == ghostY)
+		else if (packmanX == ghostX && packmanY == ghostY)
 			return 0;
 		else
 			return -1;
