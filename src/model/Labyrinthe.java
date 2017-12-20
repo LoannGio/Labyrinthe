@@ -17,12 +17,14 @@ public class Labyrinthe {
 	protected Packman packman;
 	protected Ghost ghost;
 	protected Exit exit;
+	protected Bonbon bonbon;
 
 	public Labyrinthe() {
 		g = new Graph();
 		packman = new Packman();
 		ghost = new Ghost(); 
 		exit = new Exit();
+		bonbon = new Bonbon(); 
 	}
 
 	public Graph getG() {
@@ -40,7 +42,11 @@ public class Labyrinthe {
 	public Exit getExit() {
 		return exit;
 	}
-
+	
+	public Bonbon getBonbon() {
+		return bonbon;
+	}
+	
 	public int getRIGHT_BORDER() {
 		return RIGHT_BORDER;
 	}

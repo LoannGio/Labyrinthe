@@ -8,6 +8,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
+import model.Bonbon;
 import model.Exit;
 import model.Ghost;
 import model.Graph;
@@ -35,6 +36,7 @@ public class View {
 		Packman player = laby.getPackman();
 		Ghost ghost = laby.getGhost();
 		Exit exit = laby.getExit();
+		Bonbon bonbon = laby.getBonbon();
 
 		// Walls initialization
 		for (int i = 0; i < longueur; i++) {
@@ -65,6 +67,7 @@ public class View {
 
 		ViewFrame.drawPlayer(player.getPosition().getX(), player.getPosition().getY());
 		ViewFrame.drawExit(exit.getPosition().getX(), exit.getPosition().getY());
+		ViewFrame.drawCandy(bonbon.getPosition().getX(), bonbon.getPosition().getY());
 		ViewFrame.drawGhost(ghost.getPosition().getX(), ghost.getPosition().getY());
 	}
 	

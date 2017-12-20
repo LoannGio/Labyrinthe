@@ -102,6 +102,7 @@ public class ViewFrame {
 		vDoor.relocate(x, y);
 		pane.getChildren().add(vDoor);
 	}
+	
 
 	public static void drawGhost(int x, int y) {
 		x = WALL * SPAN + x * (WALL + CELL) * SPAN;
