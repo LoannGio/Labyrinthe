@@ -35,10 +35,13 @@ public class MyThread extends Thread {
 	private void startClock() {
 		clock.scheduleAtFixedRate(new TimerTask() {
 			int time = 0;
+			int score = model.getScore();
 			  @Override
 			  public void run() {
 				  time = time+1;
+				  model.setScore(model.getScore()-1);
 				  view.updateTime(time);
+				  view.updateScore(model.getScore());
 			  }
 			}, 1000, 1000);
 	}

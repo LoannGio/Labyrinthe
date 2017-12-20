@@ -66,13 +66,11 @@ public class ViewFrame {
 			}
 		}
 		
-		score = 0;
-		scoreText = new Text(scene.getWidth() - 3 * CELL * SPAN, 25, "Score : " + score);
+		scoreText = new Text(scene.getWidth() - 3 * CELL * SPAN, 25,"");
 		scoreText.setFill(Color.BLACK);
 		pane.getChildren().add(scoreText);
 		
-		timer = 0;
-		timerText = new Text(scene.getWidth() - 3 * CELL * SPAN, 75, "Timer : " + timer);
+		timerText = new Text(scene.getWidth() - 3 * CELL * SPAN, 75,"");
 		timerText.setFill(Color.BLACK);
 		pane.getChildren().add(timerText);
 		
@@ -139,6 +137,10 @@ public class ViewFrame {
 	public static void updateTime(int temps) {
 		timerText.setText("Timer : "+ temps);
 	}
+	
+	public static void updateScore(int score) {
+		scoreText.setText("Score : "+ score);
+	}
 
 	public static void drawCandy(int x, int y) {
 		x = WALL * SPAN + x * (WALL + CELL) * SPAN;
@@ -151,4 +153,5 @@ public class ViewFrame {
 		scoreText.setText("Score : " + score);
 		pane.getChildren().remove(vCandy);
 	}
+
 }

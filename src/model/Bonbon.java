@@ -14,7 +14,8 @@ public class Bonbon extends Item {
 		do {
 			v = labyrinthe.getG().getEqualVertex(labyrinthe.getG().randomVertex());
 			labyrinthe.launchManhattan(v, niceGuyPosition);
-		} while ((v.getNbr() < minDist) );
+		} while ((v.getNbr() < minDist) && (!v.equals(labyrinthe.getExit().position)));
 		this.setPosition(v);
 	}
 }
+
