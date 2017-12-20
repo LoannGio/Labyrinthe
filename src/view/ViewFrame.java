@@ -137,7 +137,7 @@ public class ViewFrame {
 	}
 	
 	public static void updateTime(int temps) {
-		timer.setText("Timer : "+ temps);
+		timerText.setText("Timer : "+ temps);
 	}
 
 	public static void drawCandy(int x, int y) {
