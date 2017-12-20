@@ -29,7 +29,7 @@ public class Labyrinthe {
 		exit = new Exit();
 		current_dir = direction.North;
 		bonbon = new Bonbon();
-		score = 0;
+		score = 100;
 		timer = 0;
 	}
 
@@ -55,6 +55,10 @@ public class Labyrinthe {
 
 	public int getScore() {
 		return score;
+	}
+	
+	public void setScore(int score) {
+		this.score = score;
 	}
 
 	public int getTimer() {
@@ -177,5 +181,4 @@ public class Labyrinthe {
 		else
 			return -1;
 	}
-
 }
