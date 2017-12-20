@@ -83,6 +83,10 @@ public class View {
 	public void updateGhost(int x, int y) {
 		ViewFrame.updateGhost(x, y);
 	}
+	
+	public void pickUpBonbon(int score) {
+		ViewFrame.deleteBonbon(score);
+	}
 
 	public void setOnAction(EventHandler<KeyEvent> event) {
 		ViewFrame.scene.setOnKeyPressed(event);
