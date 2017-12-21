@@ -25,10 +25,9 @@ public class ViewFrame {
 	private static ImageView vGhost = new ImageView(ghost);
 	private static ImageView vCandy = new ImageView(candy);
 	public static Scene scene;
-	private static int score;
-	private static int timer;
 	private static Text scoreText;
 	private static Text timerText;
+	private static Text levelText;
 
 	
 	
@@ -66,6 +65,7 @@ public class ViewFrame {
 			}
 		}
 		
+		
 		scoreText = new Text(scene.getWidth() - 3 * CELL * SPAN, 25,"");
 		scoreText.setFill(Color.BLACK);
 		pane.getChildren().add(scoreText);
@@ -74,6 +74,9 @@ public class ViewFrame {
 		timerText.setFill(Color.BLACK);
 		pane.getChildren().add(timerText);
 		
+		levelText = new Text(scene.getWidth() - 3 * CELL * SPAN, 125,"");
+		levelText.setFill(Color.BLACK);
+		pane.getChildren().add(levelText);
 		
 		stage.show();
 	}
@@ -140,6 +143,10 @@ public class ViewFrame {
 	
 	public static void updateScore(int score) {
 		scoreText.setText("Score : "+ score);
+	}
+	
+	public static void updateLevel(int level) {
+		levelText.setText("Level : "+ level);
 	}
 
 	public static void drawCandy(int x, int y) {

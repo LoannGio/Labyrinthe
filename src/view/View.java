@@ -99,6 +99,10 @@ public class View {
 	public void updateScore(int score) {
 		ViewFrame.updateScore(score);
 	}
+	
+	public void updateLevel(int level) {
+		ViewFrame.updateLevel(level);
+	}
 
 	public int drawEndGame(int end) {
 		Alert alert = new Alert(AlertType.CONFIRMATION);

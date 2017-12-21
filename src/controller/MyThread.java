@@ -19,7 +19,7 @@ public class MyThread extends Thread {
 	private int doNext;
 	private Stage stage;
 
-	public MyThread(String name, Labyrinthe lab, View v, Controller c, Stage s, int timer_tick) {
+	public MyThread(String name, Labyrinthe lab, View v, Controller c, Stage s, int timer_tick, int level) {
 		super(name);
 		model = lab;
 		view = v;
@@ -30,6 +30,10 @@ public class MyThread extends Thread {
 		clock = new Timer();
 		startClock();
 		this.start();
+		//initialisation affichages
+		view.updateTime(0);
+		view.updateScore(model.getScore());
+		view.updateLevel(level);
 	}
 
 	private void startClock() {

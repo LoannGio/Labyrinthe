@@ -2,6 +2,7 @@ package controller;
 
 
 
+import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
@@ -17,6 +18,7 @@ public class Controller {
 	private Labyrinthe model;
 
 	private Controller() {
+
 		view = View.getInstance();
 		model = new Labyrinthe();
 		model.getExit().startPosition();
@@ -31,6 +33,7 @@ public class Controller {
 		model.getGhost().startPosition(model, model.getG().getEqualVertex(v));
 		model.getBonbon().startPosition(model, model.getPackman().getPosition());
 
+
 	}
 
 	public static Controller getInstance() {
@@ -39,7 +42,8 @@ public class Controller {
 
 	public void start(Stage primaryStage) {
 		view.start(primaryStage, model);
-		MyThread t = new MyThread("timer", model, view, instance, primaryStage, 250);
+		int level = 1;
+		MyThread t = new MyThread("timer", model, view, instance, primaryStage, 250,level);
 
 		primaryStage.getScene().setOnKeyPressed(new EventHandler<KeyEvent>() {
 			@Override
