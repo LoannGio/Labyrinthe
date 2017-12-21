@@ -6,7 +6,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Queue;
 
-public class Labyrinthe {
+public class Labyrinthe implements ILabyrinthe {
 
 	protected static final int TOP_BORDER = 0;
 	protected static final int DOWN_BORDER = 15;
@@ -125,7 +125,7 @@ public class Labyrinthe {
 		}
 	}
 
-	private void calculateManhattanDistance(Vertex source, Vertex target) {
+	public void calculateManhattanDistance(Vertex source, Vertex target) {
 		Queue<Vertex> fifo = new ArrayDeque<Vertex>();
 		target.setNbr(1);
 		fifo.add(target);

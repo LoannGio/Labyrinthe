@@ -3,7 +3,7 @@ package model;
 public class Bonbon extends Item {
 	
 	private int type;
-	private int minDist = 11;
+	private int minDist = 8;
 	
 	public Bonbon(int type) {
 		setPosition(new Vertex(0, 0, 0));
@@ -18,7 +18,8 @@ public class Bonbon extends Item {
 		do {
 			v = labyrinthe.getG().getEqualVertex(labyrinthe.getG().randomVertex());
 			labyrinthe.launchManhattan(v, niceGuyPosition);
-		} while ((v.getNbr() < minDist+2*type) && (!v.equals(labyrinthe.getExit().position)));
+		} while ((v.getNbr() > minDist) && (v.getNbr() < minDist+2*type) && (!v.equals(labyrinthe.getExit().position)));
+		minDist = minDist+2*type;
 		this.setPosition(v);
 	}
 }

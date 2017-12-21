@@ -1,6 +1,6 @@
 package model;
 
-public abstract class Item {
+public class Item implements IItem {
 
 	protected Vertex position;
 
