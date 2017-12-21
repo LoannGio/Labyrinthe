@@ -37,18 +37,22 @@ public class Controller {
 				case UP:
 				case Z:
 					model.setCurrent_dir(direction.North);
+					view.updateArrowUp();
 					break;
 				case LEFT:
 				case Q:
 					model.setCurrent_dir(direction.West);
+					view.updateArrowLeft();
 					break;
 				case DOWN:
 				case S:
 					model.setCurrent_dir(direction.South);
+					view.updateArrowDown();
 					break;
 				case RIGHT:
 				case D:
 					model.setCurrent_dir(direction.East);
+					view.updateArrowRight();
 					break;
 				default:
 					break;

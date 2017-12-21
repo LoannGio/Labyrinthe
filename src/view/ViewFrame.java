@@ -21,9 +21,21 @@ public class ViewFrame {
 	private static Image door = new Image("img/door_open.png");
 	private static Image ghost = new Image("img/bad.png");
 	private static Image candy = new Image("img/candy-1.png");
+	private static Image arrowRedUp = new Image("img/frhaut.png", 25, 25, false, false);
+	private static Image arrowRedDown = new Image("img/frbas.png", 25, 25, false, false);
+	private static Image arrowRedRight = new Image("img/frdroite.png", 25, 25, false, false);
+	private static Image arrowRedLeft = new Image("img/frgauche.png", 25, 25, false, false);
+	private static Image arrowBlueUp = new Image("img/fbhaut.png", 25, 25, false, false);
+	private static Image arrowBlueDown = new Image("img/fbbas.png", 25, 25, false, false);
+	private static Image arrowBlueRight = new Image("img/fbdroite.png", 25, 25, false, false);
+	private static Image arrowBlueLeft = new Image("img/fbgauche.png", 25, 25, false, false);
 	private static ImageView vPlayer = new ImageView(player);
 	private static ImageView vGhost = new ImageView(ghost);
 	private static ImageView vCandy = new ImageView(candy);
+	private static ImageView vArrowUp = new ImageView(arrowRedUp);
+	private static ImageView vArrowDown = new ImageView(arrowBlueDown);
+	private static ImageView vArrowRight = new ImageView(arrowBlueRight);
+	private static ImageView vArrowLeft = new ImageView(arrowBlueLeft);
 	public static Scene scene;
 	private static int score;
 	private static int timer;
@@ -74,6 +86,10 @@ public class ViewFrame {
 		timerText.setFill(Color.BLACK);
 		pane.getChildren().add(timerText);
 		
+		drawArrowUp();
+		drawArrowDown();
+		drawArrowRight();
+		drawArrowLeft();
 		
 		stage.show();
 	}
@@ -152,6 +168,66 @@ public class ViewFrame {
 	public static void deleteBonbon(int score) {
 		scoreText.setText("Score : " + score);
 		pane.getChildren().remove(vCandy);
+	}
+	
+	public static void drawArrowUp() {
+		vArrowUp.setImage(arrowRedUp);
+		int x = (int) scene.getWidth() - 22 * SPAN;
+		int y = 125;
+		vArrowUp.relocate(x, y);
+		pane.getChildren().add(vArrowUp);
+	}
+	
+	public static void drawArrowDown() {
+		vArrowDown.setImage(arrowBlueDown);
+		int x = (int) scene.getWidth() - 22 * SPAN;
+		int y = 175;
+		vArrowDown.relocate(x, y);
+		pane.getChildren().add(vArrowDown);
+	}
+	
+	public static void drawArrowRight() {
+		vArrowRight.setImage(arrowBlueRight);
+		int x = (int) scene.getWidth() - 22 * SPAN + 25;
+		int y = 150;
+		vArrowRight.relocate(x, y);
+		pane.getChildren().add(vArrowRight);
+	}
+	
+	public static void drawArrowLeft() {
+		vArrowLeft.setImage(arrowBlueLeft);
+		int x = (int) scene.getWidth() - 22 * SPAN - 25;
+		int y = 150;
+		vArrowLeft.relocate(x, y);
+		pane.getChildren().add(vArrowLeft);
+	}
+	
+	public static void updateArrowUp() {
+		vArrowUp.setImage(arrowRedUp);
+		vArrowDown.setImage(arrowBlueDown);
+		vArrowRight.setImage(arrowBlueRight);
+		vArrowLeft.setImage(arrowBlueLeft);
+	}
+	
+	public static void updateArrowDown() {
+		vArrowUp.setImage(arrowBlueUp);
+		vArrowDown.setImage(arrowRedDown);
+		vArrowRight.setImage(arrowBlueRight);
+		vArrowLeft.setImage(arrowBlueLeft);
+	}
+	
+	public static void updateArrowRight() {
+		vArrowUp.setImage(arrowBlueUp);
+		vArrowDown.setImage(arrowBlueDown);
+		vArrowRight.setImage(arrowRedRight);
+		vArrowLeft.setImage(arrowBlueLeft);
+	}
+	
+	public static void updateArrowLeft() {
+		vArrowUp.setImage(arrowBlueUp);
+		vArrowDown.setImage(arrowBlueDown);
+		vArrowRight.setImage(arrowBlueRight);
+		vArrowLeft.setImage(arrowRedLeft);
 	}
 
 }

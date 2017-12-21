@@ -99,6 +99,22 @@ public class View {
 	public void updateScore(int score) {
 		ViewFrame.updateScore(score);
 	}
+	
+	public void updateArrowUp() {
+		ViewFrame.updateArrowUp();
+	}
+	
+	public void updateArrowDown() {
+		ViewFrame.updateArrowDown();
+	}
+	
+	public void updateArrowRight() {
+		ViewFrame.updateArrowRight();
+	}
+	
+	public void updateArrowLeft() {
+		ViewFrame.updateArrowLeft();
+	}
 
 	public int drawEndGame(int end) {
 		Alert alert = new Alert(AlertType.CONFIRMATION);
