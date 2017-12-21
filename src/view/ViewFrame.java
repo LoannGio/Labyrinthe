@@ -26,7 +26,7 @@ public class ViewFrame {
 	private static ArrayList<Image> candies = new ArrayList<Image>() {{
 		add(new Image("img/candy-1.png"));
 		add(new Image("img/candy-2.png"));
-		add(new Image("img/candy-3.png"));
+		add(new Image("img/candy-3.png", 32, 13, false, false));
 		add(new Image("img/candy-4.png"));
 		
 	}};
