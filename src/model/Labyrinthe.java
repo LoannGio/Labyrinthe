@@ -23,14 +23,15 @@ public class Labyrinthe implements ILabyrinthe {
 	protected int timer;
 
 	public Labyrinthe() {
+		// Initialisation des objets du modeles
 		g = new Graph();
 		packman = new Packman();
 		ghost = new Ghost();
 		exit = new Exit();
 		current_dir = direction.North;
 		bonbons = new ArrayList<Bonbon>();
-		for(int j=1; j<=4; j++) {
-			bonbons.add( new Bonbon(j) );
+		for (int j = 1; j <= 4; j++) {
+			bonbons.add(new Bonbon(j));
 		}
 		score = 100;
 		timer = 0;
@@ -59,7 +60,7 @@ public class Labyrinthe implements ILabyrinthe {
 	public int getScore() {
 		return score;
 	}
-	
+
 	public void setScore(int score) {
 		this.score = score;
 	}
@@ -162,21 +163,20 @@ public class Labyrinthe implements ILabyrinthe {
 		int exitX = exit.getPosition().getX();
 		int exitY = exit.getPosition().getY();
 
-		for(Bonbon b : bonbons) {
-			if(b != null) {
+		for (Bonbon b : bonbons) {
+			if (b != null) {
 				int bonbonX = b.getPosition().getX();
 				int bonbonY = b.getPosition().getY();
 				if (packmanX == bonbonX && packmanY == bonbonY) {
 					int bType = b.getType();
-					score += bType*50;
-					b.setPosition(new Vertex(-1,-1));
-					b=null;				
-					return bType+1;
+					score += bType * 50;
+					b.setPosition(new Vertex(-1, -1));
+					b = null;
+					return bType + 1;
 				}
 			}
 		}
-		
-			
+
 		if (packmanX == exitX && packmanY == exitY)
 			return 1;
 		else if (packmanX == ghostX && packmanY == ghostY)
