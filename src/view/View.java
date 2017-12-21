@@ -1,5 +1,6 @@
 package view;
 
+import java.util.ArrayList;
 import java.util.Optional;
 
 import javafx.event.EventHandler;
@@ -37,7 +38,7 @@ public class View {
 		Packman player = laby.getPackman();
 		Ghost ghost = laby.getGhost();
 		Exit exit = laby.getExit();
-		Bonbon bonbon = laby.getBonbon();
+		ArrayList<Bonbon> bonbons = laby.getBonbons();
 
 		// Walls initialization
 		for (int i = 0; i < longueur; i++) {
@@ -68,7 +69,9 @@ public class View {
 
 		ViewFrame.drawPlayer(player.getPosition().getX(), player.getPosition().getY());
 		ViewFrame.drawExit(exit.getPosition().getX(), exit.getPosition().getY());
-		ViewFrame.drawCandy(bonbon.getPosition().getX(), bonbon.getPosition().getY());
+		for(int i=0; i<4; i++) {
+			ViewFrame.drawCandy(bonbons.get(i).getPosition().getX(), bonbons.get(i).getPosition().getY(),bonbons.get(i).getType());
+		}
 		ViewFrame.drawGhost(ghost.getPosition().getX(), ghost.getPosition().getY());
 	}
 
@@ -84,8 +87,8 @@ public class View {
 		ViewFrame.updateGhost(x, y);
 	}
 
-	public void pickUpBonbon(int score) {
-		ViewFrame.deleteBonbon(score);
+	public void pickUpBonbon(int score, int type) {
+		ViewFrame.deleteBonbon(score,type);
 	}
 
 	public void setOnAction(EventHandler<KeyEvent> event) {
@@ -95,16 +98,15 @@ public class View {
 	public void updateTime(int temps) {
 		ViewFrame.updateTime(temps);
 	}
-	
-	public void updateScore(int score) {
-		ViewFrame.updateScore(score);
-	}
-	
 
 	public void updateLevel(int level) {
 		ViewFrame.updateLevel(level);
 	}
 
+	public void updateScore(int score) {
+		ViewFrame.updateScore(score);
+	}
+	
 	public void updateArrowUp() {
 		ViewFrame.updateArrowUp();
 	}

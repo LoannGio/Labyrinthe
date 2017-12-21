@@ -1,5 +1,7 @@
 package view;
 
+import java.util.ArrayList;
+
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -20,7 +22,15 @@ public class ViewFrame {
 	private static Image player = new Image("img/player.png");
 	private static Image door = new Image("img/door_open.png");
 	private static Image ghost = new Image("img/bad.png");
-	private static Image candy = new Image("img/candy-1.png");
+
+	private static ArrayList<Image> candies = new ArrayList<Image>() {{
+		add(new Image("img/candy-1.png"));
+		add(new Image("img/candy-2.png"));
+		add(new Image("img/candy-3.png"));
+		add(new Image("img/candy-4.png"));
+		
+	}};
+
 	private static Image arrowRedUp = new Image("img/frhaut.png", 25, 25, false, false);
 	private static Image arrowRedDown = new Image("img/frbas.png", 25, 25, false, false);
 	private static Image arrowRedRight = new Image("img/frdroite.png", 25, 25, false, false);
@@ -29,14 +39,28 @@ public class ViewFrame {
 	private static Image arrowBlueDown = new Image("img/fbbas.png", 25, 25, false, false);
 	private static Image arrowBlueRight = new Image("img/fbdroite.png", 25, 25, false, false);
 	private static Image arrowBlueLeft = new Image("img/fbgauche.png", 25, 25, false, false);
+
 	private static ImageView vPlayer = new ImageView(player);
 	private static ImageView vGhost = new ImageView(ghost);
-	private static ImageView vCandy = new ImageView(candy);
+
+
+	private static ArrayList<ImageView> vCandies = new ArrayList<ImageView>() {{
+		add(new ImageView(candies.get(0)));
+		add(new ImageView(candies.get(1)));
+		add(new ImageView(candies.get(2)));
+		add(new ImageView(candies.get(3)));
+	}};
+
+
 	private static ImageView vArrowUp = new ImageView(arrowRedUp);
 	private static ImageView vArrowDown = new ImageView(arrowBlueDown);
 	private static ImageView vArrowRight = new ImageView(arrowBlueRight);
 	private static ImageView vArrowLeft = new ImageView(arrowBlueLeft);
+
+	
 	public static Scene scene;
+	private static int score;
+	private static int timer;
 	private static Text scoreText;
 	private static Text timerText;
 	private static Text levelText;
@@ -77,7 +101,6 @@ public class ViewFrame {
 			}
 		}
 		
-		
 		scoreText = new Text(scene.getWidth() - 3 * CELL * SPAN, 25,"");
 		scoreText.setFill(Color.BLACK);
 		pane.getChildren().add(scoreText);
@@ -86,16 +109,14 @@ public class ViewFrame {
 		timerText.setFill(Color.BLACK);
 		pane.getChildren().add(timerText);
 		
-
 		levelText = new Text(scene.getWidth() - 3 * CELL * SPAN, 125,"");
 		levelText.setFill(Color.BLACK);
 		pane.getChildren().add(levelText);
-
+		
 		drawArrowUp();
 		drawArrowDown();
 		drawArrowRight();
 		drawArrowLeft();
-
 		
 		stage.show();
 	}
@@ -167,17 +188,17 @@ public class ViewFrame {
 	public static void updateLevel(int level) {
 		levelText.setText("Level : "+ level);
 	}
-
-	public static void drawCandy(int x, int y) {
+	
+	public static void drawCandy(int x, int y, int type) {
 		x = WALL * SPAN + x * (WALL + CELL) * SPAN;
 		y = 3 * WALL * SPAN + y * (WALL + CELL) * SPAN;
-		vCandy.relocate(x, y);
-		pane.getChildren().add(vCandy);
+		vCandies.get(type-1).relocate(x, y);
+		pane.getChildren().add(vCandies.get(type-1));
 	}
 	
-	public static void deleteBonbon(int score) {
+	public static void deleteBonbon(int score, int type) {
 		scoreText.setText("Score : " + score);
-		pane.getChildren().remove(vCandy);
+		pane.getChildren().remove(vCandies.get(type-1));
 	}
 	
 	public static void drawArrowUp() {

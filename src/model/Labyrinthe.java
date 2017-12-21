@@ -18,7 +18,7 @@ public class Labyrinthe {
 	protected Ghost ghost;
 	protected Exit exit;
 	protected direction current_dir;
-	protected Bonbon bonbon;
+	protected ArrayList<Bonbon> bonbons;
 	protected int score;
 	protected int timer;
 
@@ -28,7 +28,10 @@ public class Labyrinthe {
 		ghost = new Ghost();
 		exit = new Exit();
 		current_dir = direction.North;
-		bonbon = new Bonbon();
+		bonbons = new ArrayList<Bonbon>();
+		for(int j=1; j<=4; j++) {
+			bonbons.add( new Bonbon(j) );
+		}
 		score = 100;
 		timer = 0;
 	}
@@ -49,8 +52,8 @@ public class Labyrinthe {
 		return exit;
 	}
 
-	public Bonbon getBonbon() {
-		return bonbon;
+	public ArrayList<Bonbon> getBonbons() {
+		return bonbons;
 	}
 
 	public int getScore() {
@@ -159,22 +162,22 @@ public class Labyrinthe {
 		int exitX = exit.getPosition().getX();
 		int exitY = exit.getPosition().getY();
 
-		int bonbonX;
-		int bonbonY;
-
-		if (bonbon != null) {
-			bonbonX = bonbon.getPosition().getX();
-			bonbonY = bonbon.getPosition().getY();
-		} else {
-			bonbonX = -1;
-			bonbonY = -1;
+		for(Bonbon b : bonbons) {
+			if(b != null) {
+				int bonbonX = b.getPosition().getX();
+				int bonbonY = b.getPosition().getY();
+				if (packmanX == bonbonX && packmanY == bonbonY) {
+					int bType = b.getType();
+					score += bType*50;
+					b.setPosition(new Vertex(-1,-1));
+					b=null;				
+					return bType+1;
+				}
+			}
 		}
-
-		if (packmanX == bonbonX && packmanY == bonbonY) {
-			score += 50;
-			bonbon = null;
-			return 2;
-		} else if (packmanX == exitX && packmanY == exitY)
+		
+			
+		if (packmanX == exitX && packmanY == exitY)
 			return 1;
 		else if (packmanX == ghostX && packmanY == ghostY)
 			return 0;

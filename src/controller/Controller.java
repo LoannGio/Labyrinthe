@@ -1,9 +1,5 @@
 package controller;
 
-
-
-
-import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
@@ -20,25 +16,9 @@ public class Controller {
 	private int level;
 
 	private Controller() {
-
 		view = View.getInstance();
-		model = new Labyrinthe();
-		model.getExit().startPosition();
-		Vertex v = model.getExit().getPosition();
-		model.getG().addVertex(v);
-		model.buildPath(v);
-
-		for (int i = 0; i < 80; i++) {
-			model.openDoorRandom();
-		}
-		model.getPackman().startPosition(model, model.getG().getEqualVertex(v));
-		model.getGhost().startPosition(model, model.getG().getEqualVertex(v));
-		model.getBonbon().startPosition(model, model.getPackman().getPosition());
-
-
 		level = 1;
 		playGame();
-
 
 	}
 
@@ -48,9 +28,7 @@ public class Controller {
 
 	public void start(Stage primaryStage) {
 		view.start(primaryStage, model);
-		int level = 1;
-		MyThread t = new MyThread("timer", model, view, instance, primaryStage, 250,level);
-
+		MyThread t = new MyThread("timer", model, view, instance, primaryStage);
 
 		primaryStage.getScene().setOnKeyPressed(new EventHandler<KeyEvent>() {
 			@Override
@@ -100,7 +78,9 @@ public class Controller {
 
 		model.getPackman().startPosition(model, model.getG().getEqualVertex(v));
 		model.getGhost().startPosition(model, model.getG().getEqualVertex(v));
-		model.getBonbon().startPosition(model, model.getPackman().getPosition());
+		for(int j=0; j<4; j++) {
+			model.getBonbons().get(j).startPosition(model, model.getPackman().getPosition());
+		}
 	}
 
 	public void continueGame(Stage primaryStage) {
@@ -118,7 +98,9 @@ public class Controller {
 
 		model.getPackman().startPosition(model, model.getG().getEqualVertex(v));
 		model.getGhost().startPosition(model, model.getG().getEqualVertex(v));
-		model.getBonbon().startPosition(model, model.getPackman().getPosition());
+		for(int j=0; j<4; j++) {
+			model.getBonbons().get(j).startPosition(model, model.getPackman().getPosition());
+		}
 		this.start(primaryStage);
 	}
 
