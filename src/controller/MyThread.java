@@ -27,16 +27,16 @@ public class MyThread extends Thread {
 		stage = s;
 		int level = c.getLevel();
 
-		// Définition de la vitesse du jeu : l'intervalle de temps entre deux
-		// déplacements diminue en fonction du niveau actuel
+		// Definition de la vitesse du jeu : l'intervalle de temps entre deux
+		// deplacements diminue en fonction du niveau actuel
 		tick = (1000) - (level - 1) * 150;
 		if (tick < 400)
 			tick = 400;
 
-		// Démarrage des horloges
-		// timer : lance le déplacement des objets Movables à intervalles (tick)
-		// réguliers
-		// clock : indicateur du temps écoulé depuis le début du niveau
+		// Dï¿½marrage des horloges
+		// timer : lance le deplacement des objets Movables a intervalles (tick)
+		// reguliers
+		// clock : indicateur du temps ecoule depuis le debut du niveau
 		timer = new Timer();
 		clock = new Timer();
 		startClock();
@@ -70,7 +70,7 @@ public class MyThread extends Thread {
 			public void run() {
 				direction myDirection = model.getCurrent_dir();
 
-				// Déplacement du Packman dans la direction courante et du Ghost
+				// Deplacement du Packman dans la direction courante et du Ghost
 				// (plus court chemin vers Packman)
 				model.getPackman().move(model, myDirection);
 				model.getGhost().move(model);
@@ -100,7 +100,7 @@ public class MyThread extends Thread {
 								switch (doNext) {
 								case -1: // On rejoue
 									controller.playGame(); // On reinitialise le
-															// modèle pour
+															// modele pour
 															// rejouer
 									controller.start(stage);// On reinitialise
 															// la vue

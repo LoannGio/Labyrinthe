@@ -29,10 +29,10 @@ public class Controller {
 	public void start(Stage primaryStage) {
 		view.start(primaryStage, model);
 
-		// Thread qui gère les déplacements de Pacman et Ghost via un timer
+		// Thread qui gere les deplacements de Pacman et Ghost via un timer
 		MyThread t = new MyThread("timer", model, view, instance, primaryStage);
 
-		// Récupération des évènements du clavier
+		// Recuperation des evenements du clavier
 		primaryStage.getScene().setOnKeyPressed(new EventHandler<KeyEvent>() {
 			@Override
 			public void handle(KeyEvent event) {
@@ -65,7 +65,7 @@ public class Controller {
 	}
 
 	public void playGame() {
-		// Creation du modele : on place la porte de sortie et on crée notre
+		// Creation du modele : on place la porte de sortie et on crï¿½e notre
 		// arbre en prenant l'emplacement de la porte comme racine
 		model = new Labyrinthe();
 		model.getExit().startPosition();
@@ -82,11 +82,11 @@ public class Controller {
 			model.openDoorRandom();
 		}
 
-		// On place le Packman à l'endroit le plus eloigne de la porte dans
+		// On place le Packman a l'endroit le plus eloigne de la porte dans
 		// l'arbre
 		model.getPackman().startPosition(model, model.getG().getEqualVertex(v));
 
-		// On place le Ghost et les bonbons de manière aléatoire, avec une
+		// On place le Ghost et les bonbons de maniere aleatoire, avec une
 		// contrainte de distance minimum avec le packman
 		model.getGhost().startPosition(model, model.getG().getEqualVertex(v));
 		for (int j = 0; j < 4; j++) {
@@ -95,7 +95,7 @@ public class Controller {
 	}
 
 	public void continueGame(Stage primaryStage) {
-		// Creation du modele : on place la porte de sortie et on crée notre
+		// Creation du modele : on place la porte de sortie et on cree notre
 		// arbre en prenant l'emplacement de la porte comme racine
 		model = new Labyrinthe();
 		model.getExit().startPosition();
@@ -103,7 +103,7 @@ public class Controller {
 		model.getG().addVertex(v);
 		model.buildPath(v);
 
-		// On augmente le niveau de difficulté
+		// On augmente le niveau de difficulte
 		level++;
 
 		// "Ouvertures de portes" afin de rendre le jeu imparfait en tenant
@@ -113,7 +113,7 @@ public class Controller {
 			model.openDoorRandom();
 		}
 
-		// On place le Ghost et les bonbons de manière aléatoire, avec une
+		// On place le Ghost et les bonbons de maniere aleatoire, avec une
 		// contrainte de distance minimum avec le packman
 		model.getPackman().startPosition(model, model.getG().getEqualVertex(v));
 		model.getGhost().startPosition(model, model.getG().getEqualVertex(v));
